@@ -12,7 +12,6 @@ nCr:
   pushl %ecx          /*makes ecx the first paramater for the next call*/
   call Factorial      /*calls factorial on ecx*/
   addl $4, %esp       /*unallocates space for parameter*/
-  jo .L3
 
   movl %eax, %ecx     /*copies eax '(n-r)!' into ecx*/
 
@@ -21,7 +20,6 @@ nCr:
   pushl %ebx          /*pushes value in ebx so its the first parameter in the next call*/
   call Factorial      /*calls factorial on ebx - eax contains 'r!'*/
   addl $4, %esp       /*unallocates space for parameter*/
-  jo .L3
 
   imull %eax, %ecx    /*multiplies eax and ecx, so now ecs contains 'r!*(n-r)!'*/
 
@@ -30,7 +28,6 @@ nCr:
   pushl %ebx          /*makes ebx the first paramater for the next call*/
   call Factorial      /*calls factorial on ebx - eax contains 'n!'*/
   addl $4, %esp       /*unallocates space for parameter*/
-  jo .L3
 
   movl $0, %edx
   idivl %ecx          /*divides eax by ecs or 'n!' / 'r!*(n-r)!'*/
