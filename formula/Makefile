@@ -1,17 +1,9 @@
-all: nCr formula combine test clean
-	#Call: make nCr
+all: formula test clean
 
-nCr: nCr.h nCr.s
+formula: nCr.h nCr.s formula.h formula.c
 	gcc -ansi -pedantic -Wall -m32 -c nCr.h nCr.s
-	#Call: make formula
-
-formula: formula.h formula.c
 	gcc -ansi -pedantic -Wall -m32 -c formula.h formula.c
-	#Call: make combine
-
-combine: formula.o nCr.o
 	gcc -ansi -pedantic -Wall -m32 -o formula formula.o nCr.o
-	#Call ./formula to use, call make clean to clear
 
 clean:
 	rm -f *.o

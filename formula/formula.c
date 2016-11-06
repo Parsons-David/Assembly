@@ -5,17 +5,17 @@
 #include <sys/time.h>
 
 int main(int argc, char ** argv){
+  struct timeval tvS, tvE;
+  int i = 0;
+  int power = atoi(argv[1]);
   if(argc != 2){
     printf("ERROR: Please give one integer argument.\n");
     return 1;
   }
 
-  struct timeval tvS, tvE;
-  int power = atoi(argv[1]);
   gettimeofday(&tvS, NULL);
 
   printf("(1 + x)^%d = 1", power);
-  int i = 0;
   for(i = 1; i <= power; i++){
     printf(" + %d*x^%d",  nCr(power, i), i);
   }
