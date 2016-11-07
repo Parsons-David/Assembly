@@ -1,3 +1,4 @@
+#include "mystery.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -69,6 +70,6 @@
       num[i] = -1; // lines 95 and 96
       i++; // line 97
     }
-    printf("%d\n", fibb(input)); // lines 101:106
+    printf("Value: %d\n", fibb(input)); // lines 101:106
     return 0;
   }

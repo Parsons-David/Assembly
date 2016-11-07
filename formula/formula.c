@@ -8,6 +8,10 @@ int main(int argc, char ** argv){
   struct timeval tvS, tvE;
   int i = 0;
   int power = atoi(argv[1]);
+  if(strcmp(argv[1], "-h") == 0){
+    printf("Usage: formula <positive integer>\n");
+    return 0;
+  }
   if(argc != 2){
     printf("ERROR: Please give one integer argument.\n");
     return 1;

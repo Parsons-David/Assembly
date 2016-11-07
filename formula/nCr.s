@@ -32,16 +32,9 @@ nCr:
   movl $0, %edx
   idivl %ecx          /*divides eax by ecs or 'n!' / 'r!*(n-r)!'*/
 
-  jmp .L4
-
-.L3:
-
-  movl $0, %eax
-
-.L4:
-
   leave
   ret
+
   .size nCr, .-nCr
 
 
@@ -50,18 +43,18 @@ nCr:
 Factorial:
   # Your code for Factorial should go here
 
-  pushl %ebp
-  movl %esp, %ebp
-  movl 8(%ebp), %eax
-  cmp $1, %eax
-  jg .L1
-  movl $1, %eax
-  jmp .L2
+  pushl %ebp            /*pushes base pointer*/
+  movl %esp, %ebp       /*copies stack pointer into base pointer*/
+  movl 8(%ebp), %eax    /*copies the first parameter into the return register eax*/
+  cmp $1, %eax          /*Compares the return register and therefore input parameter to 1*/
+  jg .L1                /*jumps to .L1 if the paramter is greater than 1*/
+  movl $1, %eax         /*Otherwise copy 1 into the return parameter*/
+  jmp .L2               /*jump to .L2 to return value of 1*/
 .L1:
-  subl $1, 8(%ebp)
-  imull 8(%ebp), %eax
-  cmp $2, 8(%ebp)
-  jnl .L1
+  subl $1, 8(%ebp)      /*subtracts one from the first parameter*/
+  imull 8(%ebp), %eax   /*multiplies the return register by the first parameter*/
+  cmp $2, 8(%ebp)       /*compares 2 to the current state of the first parameter*/
+  jnl .L1               /*jumps to .L1 if the parameter is still greater than 1 or not less than 2*/
 .L2:
   leave
   ret
